@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace RabbitMQ.Kernel.Base.Basic
 {
+
+
+
     public abstract class QueueChannelProviderBase<TQueueMessage> : IQueueChannelProvider<TQueueMessage> where TQueueMessage : IQueueMessage
     {
         protected readonly IChannelProvider channelProvider;
