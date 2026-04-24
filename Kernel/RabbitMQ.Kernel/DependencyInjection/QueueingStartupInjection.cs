@@ -53,6 +53,7 @@ namespace RabbitMQ.Kernel.QueueingStartupInjection
             services.AddScoped<IQueueProducerStrategyFactory, QueueProducerStrategyFactory>();
 
             services.AddScoped<IChannelProviderStrategyFactory, ChannelProviderStrategyFactory>();
+            
             services.AddScoped(typeof(IQueueChannelProvider<>), typeof(DefaultQueueChannelProvider<>));
 
             services.AddScoped(typeof(IQueueProducerBuilder<>), typeof(QueueProducerBuilder<>));
