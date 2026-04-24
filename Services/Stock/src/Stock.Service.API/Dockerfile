@@ -13,8 +13,8 @@ FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["Services/Stock/src/Stock.Service.API/Stock.Service.API.csproj", "Services/Stock/src/Stock.Service.API/"]
-COPY ["Shared/Kernel/RabbitMQ.Kernel.Base/RabbitMQ.Kernel.Base.csproj", "Shared/Kernel/RabbitMQ.Kernel.Base/"]
-COPY ["Shared/Kernel/RabbitMQ.Kernel/RabbitMQ.Kernel.csproj", "Shared/Kernel/RabbitMQ.Kernel/"]
+COPY ["Kernel/RabbitMQ.Kernel.Base/RabbitMQ.Kernel.Base.csproj", "Shared/Kernel/RabbitMQ.Kernel.Base/"]
+COPY ["Kernel/RabbitMQ.Kernel/RabbitMQ.Kernel.csproj", "Shared/Kernel/RabbitMQ.Kernel/"]
 COPY ["Services/Stock/src/Stock.Service.Application/Stock.Service.Application.csproj", "Services/Stock/src/Stock.Service.Application/"]
 COPY ["Services/Stock/src/Stock.Service.Domain/Stock.Service.Domain.csproj", "Services/Stock/src/Stock.Service.Domain/"]
 COPY ["Services/Stock/src/Stock.Service.Persistence/Stock.Service.Persistence.csproj", "Services/Stock/src/Stock.Service.Persistence/"]
