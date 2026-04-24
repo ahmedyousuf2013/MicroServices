@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 
 namespace RabbitMQ.Kernel.Consumer
 {
+
     public class QueueConsumerHandler<TMessageConsumer, TQueueMessage> : IQueueConsumerHandler<TMessageConsumer, TQueueMessage> where TMessageConsumer : IQueueConsumer<TQueueMessage> where TQueueMessage : class, IQueueMessage
     {
         private readonly IServiceProvider _serviceProvider;
