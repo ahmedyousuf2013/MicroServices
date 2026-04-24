@@ -21,7 +21,6 @@ namespace RabbitMQ.Kernel.Consumer
         private IQueueConsumerHandler<TMessageConsumer, TQueueMessage> _consumerHandler;
         private IServiceScope _scope;
 
-        // استقبال الإعدادات هنا
         public QueueConsumerRegistratorService(
             ILogger<QueueConsumerRegistratorService<TMessageConsumer, TQueueMessage>> logger,
             IServiceProvider serviceProvider,
