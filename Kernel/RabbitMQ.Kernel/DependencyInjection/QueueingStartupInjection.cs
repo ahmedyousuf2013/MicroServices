@@ -45,6 +45,8 @@ namespace RabbitMQ.Kernel.QueueingStartupInjection
             // See https://www.rabbitmq.com/dotnet-api-guide.html#connecting and https://www.rabbitmq.com/dotnet-api-guide.html#concurrency-thread-usage
             services.AddSingleton<IConnectionProvider, ConnectionProvider>();
 
+         
+            
             // The RabbitMQ documentation states that IModels (or Channels) should not be used between threads simultaniously.
             // When using transactions in the consumers, giving each scope its own Channel will insure reliability in the processing of a Queue message
             // See https://www.rabbitmq.com/dotnet-api-guide.html#concurrency-channel-sharing
