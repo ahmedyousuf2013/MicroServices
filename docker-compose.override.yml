@@ -1,0 +1,20 @@
+services:
+  catalogddatabase:
+    image: 'mongo'
+    container_name: catalog_db
+    restart: always
+    ports:
+      - '27017:27017'
+    volumes:
+        - mongo_data:/data/db
+
+  catalog.service.api:
+    container_name: catalogserviceapi
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8082
+      - connectionstrings__mongodb=mongodb://catalog_db:27017
+    depends_on:
+      - catalogddatabase 
+    ports:
+      - "8000:80"
