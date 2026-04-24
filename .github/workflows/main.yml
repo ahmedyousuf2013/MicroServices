@@ -5,13 +5,13 @@ name: Stock Service .NET
       - main
     paths:
       - 'Services/Stock/**'
-      - 'Shared/Kernel/**'
+      - 'Kernel/**'
   pull_request:
     branches:
       - main
     paths:
       - 'Services/Stock/**'
-      - 'Shared/Kernel/**'
+      - 'Kernel/**'
 jobs:
   build:
     runs-on: ubuntu-latest
