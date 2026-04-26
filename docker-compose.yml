@@ -25,7 +25,7 @@ services:
     image: 'mongo'
     container_name: catalog_db
     ports:
-      - '5433:5432'
+      - '27017:27017'
     environment:
       POSTGRES_PASSWORD: P@ssw0rd
     volumes:

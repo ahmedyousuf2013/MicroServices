@@ -22,8 +22,9 @@
     },
     "Container (Dockerfile)": {
       "commandName": "Docker",
+      "applicationUrl": "http://+:80",
       "launchBrowser": true,
-      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/swagger",
+      "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_HTTPS_PORTS": "8081",
         "ASPNETCORE_HTTP_PORTS": "8080"
