@@ -77,10 +77,11 @@ services:
       context: .
       dockerfile: Services/Stock/src/Stock.Service.API/Dockerfile
     ports:
-      - '7113:8080'
+      - '7113:80'
+      - '7112:80'
     environment:
       - ASPNETCORE_ENVIRONMENT=Docker
-      - 'ASPNETCORE_URLS=http://+:8080'
+      - 'ASPNETCORE_URLS=http://+:80'
       - ConnectionStrings__default=Host=stockddatabase;Database=StockDb;Username=postgres;Password=P@ssw0rd
       - MQServerConnSettings__Host=rabbitmq
       - MQServerConnSettings__Port=5672

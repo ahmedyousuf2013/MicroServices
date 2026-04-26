@@ -19,6 +19,7 @@
   <Folder Name="/Services/Stock/tests/">
     <Project Path="Services/Stock/tests/Stock.Service.Integration.Test/Stock.Service.Integration.Test.csproj" />
   </Folder>
+  <Folder Name="/Solution Items/" />
   <Project Path="docker-compose.dcproj">
     <Build />
   </Project>
