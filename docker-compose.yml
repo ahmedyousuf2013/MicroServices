@@ -26,14 +26,12 @@ services:
     container_name: catalog_db
     ports:
       - '27017:27017'
-    environment:
-      POSTGRES_PASSWORD: P@ssw0rd
     volumes:
-      - 'postgres_data:/var/lib/postgresql/data'
+      - 'mongo_data:/data/db'
     healthcheck:
       test:
         - CMD-SHELL
-        - pg_isready -U postgres
+        - mongosh --eval "db.adminCommand({ping:1})" --quiet
       interval: 10s
       retries: 5
       start_period: 30s
@@ -64,10 +62,10 @@ services:
   catalog.service.api:
     image: ${DOCKER_REGISTRY-}catalogserviceapi
     build:
-      context: Services/Catalog/src/Catalog.Service.API
-      dockerfile: Dockerfile
+      context: Services/Catalog/src
+      dockerfile: Catalog.Service.API/Dockerfile
     depends_on:
-      stockddatabase:
+      catalogddatabase:
         condition: service_healthy
         restart: true
 
@@ -97,6 +95,6 @@ services:
         condition: service_healthy
   
 volumes:
-  postgres_data: null
-  rabbitmq_data: null
-  mongo_data: null
+  postgres_data: 
+  rabbitmq_data: 
+  mongo_data: 

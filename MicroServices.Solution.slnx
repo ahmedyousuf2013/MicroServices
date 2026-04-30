@@ -7,6 +7,9 @@
   <Folder Name="/Services/Catalog/" />
   <Folder Name="/Services/Catalog/src/">
     <Project Path="Services/Catalog/src/Catalog.Service.API/Catalog.Service.API.csproj" />
+    <Project Path="Services/Catalog/src/Catalog.Service.Application/Catalog.Service.Application.csproj" Id="e4f8c4d1-9206-44b2-bf8b-7fd69e12f21b" />
+    <Project Path="Services/Catalog/src/Catalog.Service.Domain/Catalog.Service.Domain.csproj" Id="75d1cde3-5226-4212-888f-d6f9feb0189f" />
+    <Project Path="Services/Catalog/src/Catalog.Service.Persistence/Catalog.Service.Persistence.csproj" Id="9893fc84-d600-4697-9ae0-22e4021fc551" />
   </Folder>
   <Folder Name="/Services/Catalog/test/" />
   <Folder Name="/Services/Stock/" />

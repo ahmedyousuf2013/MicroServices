@@ -12,11 +12,10 @@ services:
     container_name: catalogserviceapi
     environment:
       - ASPNETCORE_ENVIRONMENT=Docker
-      - ASPNETCORE_HTTP_PORTS=80
-      - DatabaseSettings__ConnectionString=mongodb://catalog_db:27017
-      - DatabaseSettings__DatabaseName=ProductDb
-      - DatabaseSettings__CollectionName=use
+      - ASPNETCORE_HTTP_PORTS=8080
+      - MongoDbSettings__ConnectionString=mongodb://catalog_db:27017
+      - MongoDbSettings__DatabaseName=ProductDb
     depends_on:
-      - catalogddatabase 
+      - catalogddatabase
     ports:
-      - "8000:80"
+      - "5247:8080"

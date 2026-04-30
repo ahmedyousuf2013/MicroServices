@@ -1,22 +1,43 @@
-﻿using Catalog.Service.API.Entities;
+﻿using Catalog.Service.Domain.Entities;
 using MongoDB.Driver;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace Catalog.Service.API.Data
+namespace Catalog.Service.Persistence.Data
 {
     public class CatalogContextSeed
     {
-        public static void SeedData(IMongoCollection<Product> productCollection)
+        public static void SeedData(IMongoDatabase database)
         {
-            bool existProduct = productCollection.Find(p => true).Any();
-            if (!existProduct)
-            {
-                productCollection.InsertManyAsync(GetPreconfiguredProducts());
-            }
+            InsertCategories(database.GetCollection<Category>(nameof(Category)));
+            InsertProducts(database.GetCollection<Product>(nameof(Product)));
         }
 
-        private static IEnumerable<Product> GetPreconfiguredProducts()
+        private static void InsertCategories(IMongoCollection<Category> categoryCollection)
         {
-            return new List<Product>()
+            categoryCollection.DeleteMany(_ => true);
+            categoryCollection.InsertMany(
+                new List<Category>
+                {
+                    new Category
+                    {
+                        Id = "605fbfdda571444fd7ade05b",
+                        Description = "Category Description One"
+                    },
+                    new Category
+                    {
+                        Id = "605fbfecdefb479679f08517",
+                        Description = "Category Description Two"
+                    }
+                });
+        }
+
+        private static void InsertProducts(IMongoCollection<Product> productCollection)
+        {
+            productCollection.DeleteMany(_ => true);
+            productCollection.InsertMany(
+                  new List<Product>()
             {
                 new Product()
                 {
@@ -26,7 +47,7 @@ namespace Catalog.Service.API.Data
                     Description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.",
                     ImageFile = "product-1.png",
                     Price = 950.00M,
-                    Category = "Smart Phone"
+                    CategoryId = "605fbfdda571444fd7ade05b"
                 },
                 new Product()
                 {
@@ -36,7 +57,7 @@ namespace Catalog.Service.API.Data
                     Description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.",
                     ImageFile = "product-2.png",
                     Price = 840.00M,
-                    Category = "Smart Phone"
+                    CategoryId = "605fbfecdefb479679f08517",
                 },
                 new Product()
                 {
@@ -46,7 +67,7 @@ namespace Catalog.Service.API.Data
                     Description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.",
                     ImageFile = "product-3.png",
                     Price = 650.00M,
-                    Category = "White Appliances"
+                    CategoryId = "605fbfdda571444fd7ade05b"
                 },
                 new Product()
                 {
@@ -56,7 +77,7 @@ namespace Catalog.Service.API.Data
                     Description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.",
                     ImageFile = "product-4.png",
                     Price = 470.00M,
-                    Category = "White Appliances"
+                     CategoryId = "605fbfecdefb479679f08517",
                 },
                 new Product()
                 {
@@ -66,7 +87,7 @@ namespace Catalog.Service.API.Data
                     Description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.",
                     ImageFile = "product-5.png",
                     Price = 380.00M,
-                    Category = "Smart Phone"
+                   CategoryId = "605fbfdda571444fd7ade05b"
                 },
                 new Product()
                 {
@@ -76,9 +97,9 @@ namespace Catalog.Service.API.Data
                     Description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.",
                     ImageFile = "product-6.png",
                     Price = 240.00M,
-                    Category = "Home Kitchen"
+                    CategoryId = "605fbfecdefb479679f08517"
                 }
-            };
+            });
         }
     }
 }
