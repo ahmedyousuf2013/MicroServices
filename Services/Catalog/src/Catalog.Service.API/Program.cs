@@ -1,8 +1,11 @@
 using Catalog.Service.API;
+using Catalog.Service.Application.Mutations;
 using Catalog.Service.Application.Queries;
 using Catalog.Service.Domain.Repositories;
 using Catalog.Service.Persistence.Data;
 using Catalog.Service.Persistence.Repositories;
+using Catalog.Service.Persistence.Resolvers;
+using Catalog.Service.Persistence.Types;
 using HotChocolate.Execution.Processing;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.Options;
@@ -35,17 +38,17 @@ builder.Services
     .AddGraphQLServer()
     .AddAuthorization()
     .AddInMemorySubscriptions()
+
     .AddQueryType(d => d.Name("Query"))
-        .AddTypeExtension<ProductQuery>() // define your root Query
-    //.AddMutationType<Mutation>()    // define your root Mutation
-    //.AddSubscriptionType<Subscription>() // define your root Subscription
-    // .AdddQueryExtensionType()
-    // .AdddMutationExtensionType()
-    //.AddSubscrintionType()
-    .AddFiltering()
-    .AddSorting()
-    .AddProjections()
-    .AddPagingArguments();
+                    .AddTypeExtension<ProductQuery>()
+                    .AddTypeExtension<CategoryQuery>()
+                    .AddType<ProductType>()
+                    .AddType<CategoryType>()
+    .AddMutationType(d => d.Name("Mutation"))
+                    .AddTypeExtension<ProductMutation>()
+                 //   .AddTypeExtension<CategoryMutation>()
+    .AddTypeExtension<CategoryResolver>();
+
 
 var app = builder.Build();
 

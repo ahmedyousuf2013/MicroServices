@@ -16,6 +16,6 @@ namespace Catalog.Service.Domain.Entities
         public string Description { get; set; }
         public string ImageFile { get; set; }
         public decimal Price { get; set; }
-        public object? Quantity { get; set; }
+        public int Quantity { get; set; }
     }
 }

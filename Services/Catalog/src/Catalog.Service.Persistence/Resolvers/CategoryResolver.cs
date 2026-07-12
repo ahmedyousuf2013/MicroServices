@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Catalog.Service.Persistence.Resolvers
 {
-    [ExtendObjectType(Name = "Category")]
+    [ExtendObjectType(typeof(Product))]
     public class CategoryResolver
     {
         public Task<Category> GetCategoryAsync([Parent] Product product, [Service] ICategoryRepository categoryRepository) =>
