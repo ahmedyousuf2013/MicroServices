@@ -46,7 +46,7 @@ builder.Services
                     .AddType<CategoryType>()
     .AddMutationType(d => d.Name("Mutation"))
                     .AddTypeExtension<ProductMutation>()
-                 //   .AddTypeExtension<CategoryMutation>()
+                    .AddTypeExtension<CategoryMutation>()
     .AddTypeExtension<CategoryResolver>();
 
 
