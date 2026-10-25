@@ -11,7 +11,9 @@
     <Project Path="Services/Catalog/src/Catalog.Service.Domain/Catalog.Service.Domain.csproj" Id="75d1cde3-5226-4212-888f-d6f9feb0189f" />
     <Project Path="Services/Catalog/src/Catalog.Service.Persistence/Catalog.Service.Persistence.csproj" Id="9893fc84-d600-4697-9ae0-22e4021fc551" />
   </Folder>
-  <Folder Name="/Services/Catalog/test/" />
+  <Folder Name="/Services/Catalog/tests/">
+    <Project Path="Services/Catalog/tests/Catalog.Service.UnitTest/Catalog.Service.UnitTest.csproj" Id="b5462323-58df-4b2d-a396-503c414938ce" />
+  </Folder>
   <Folder Name="/Services/Stock/" />
   <Folder Name="/Services/Stock/src/">
     <Project Path="Services/Stock/src/Stock.Service.API/Stock.Service.API.csproj" />

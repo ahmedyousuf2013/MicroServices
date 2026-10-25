@@ -38,13 +38,12 @@ builder.Services
     .AddGraphQLServer()
     .AddAuthorization()
     .AddInMemorySubscriptions()
-
-    .AddQueryType(d => d.Name("Query"))
+    .AddQueryType<Query>()
                     .AddTypeExtension<ProductQuery>()
                     .AddTypeExtension<CategoryQuery>()
                     .AddType<ProductType>()
                     .AddType<CategoryType>()
-    .AddMutationType(d => d.Name("Mutation"))
+    .AddMutationType<Mutation>()
                     .AddTypeExtension<ProductMutation>()
                     .AddTypeExtension<CategoryMutation>()
     .AddTypeExtension<CategoryResolver>();
